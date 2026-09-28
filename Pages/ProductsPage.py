@@ -1,4 +1,4 @@
-from Pages import BasePage
+from Pages.BasePage import BasePage
 from Locators import ProductsLocators
 from selenium.webdriver.common.by import By
 
