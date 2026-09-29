@@ -23,5 +23,12 @@ class ProductsPage(BasePage):
                    ProductsLocators.items_on_products_page[1].format(product_name = product_name))
         self.click(locator)
 
+    def verify_products_are_displayed(self):
+        products = self.find_elements(ProductsLocators.products)
+        assert len(products)>0
+        for product in products:
+            assert product.is_displayed()
+        
+
 
         

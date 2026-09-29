@@ -41,3 +41,5 @@ class LoginPage(BasePage):
         return self.wait_for_visible_element(LoginLocators.empty_fields_error)
 
     
+
+    

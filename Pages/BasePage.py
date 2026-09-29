@@ -20,3 +20,9 @@ class BasePage:
     def enter_text(self, locator, text):
         element = self.wait_for_visible_element(locator)
         element.send_keys(text)
+
+    def verify_current_url(self, url):
+        assert self.driver.current_url == url
+
+    def find_elements(self, locator):
+        return self.driver.find_elements(*locator)
