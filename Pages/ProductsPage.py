@@ -1,6 +1,7 @@
 from Pages.BasePage import BasePage
 from Locators import ProductsLocators
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 
 class ProductsPage(BasePage):
 
@@ -24,11 +25,39 @@ class ProductsPage(BasePage):
         self.click(locator)
 
     def verify_products_are_displayed(self):
-        products = self.find_elements(ProductsLocators.products)
-        assert len(products)>0
-        for product in products:
-            assert product.is_displayed()
-        
+        items = self.get_elements(ProductsLocators.items)
+        assert len(items)>0
+
+        for item in items:
+            assert item.is_displayed()
+
+    def sort_dropdown(self, text):
+        sort_dropdown = self.wait_for_visible_element(ProductsLocators.sort_button)
+        options = Select(sort_dropdown)
+        options.select_by_visible_text(text)
+
+    def verify_items_are_sorted_low_to_high(self):
+        prices = self.get_elements(ProductsLocators.items_price)
+        i = 0
+        for i in range(i, len(prices)):
+            for j in range(i+1, len(prices)):
+                price_i =float(prices[i].text.replace("$", ""))
+                price_j =float(prices[j].text.replace("$", ""))
+                assert price_i<=price_j 
+
+    def get_shopping_cart_badge(self):
+        shopping_cart_badge = self.wait_for_visible_element(ProductsLocators.shopping_cart_badge)
+        badge_value = shopping_cart_badge.text
+        return int(badge_value)
+
+    def verify_shopping_cart_badge_updates(self, product_name1,product_name2 ):
+        self.add_product_to_cart(product_name1)
+        badge_value = self.get_shopping_cart_badge()
+        self.add_product_to_cart(product_name2)
+        updated_value = self.get_shopping_cart_badge()
+        assert updated_value == badge_value+1
+
+
 
 
         

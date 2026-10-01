@@ -1,0 +1,16 @@
+from selenium import webdriver
+from Pages.LoginPage import LoginPage
+
+def test_TC008_verify_shopping_cart_badge_updates():
+    driver = webdriver.Chrome()
+
+    login_page = LoginPage(driver)
+
+    #1. Navigate to URL
+    driver.get("https://www.saucedemo.com/")
+
+    #2. Login to the application
+    products_page = login_page.login("standard_user", "secret_sauce")
+
+    #3. Verify that the Shopping cart badge updated on adding products to cart
+    products_page.verify_shopping_cart_badge_updates(product_name1 = "Sauce Labs Backpack", product_name2 = "Sauce Labs Bike Light")

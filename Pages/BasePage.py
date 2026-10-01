@@ -24,5 +24,5 @@ class BasePage:
     def verify_current_url(self, url):
         assert self.driver.current_url == url
 
-    def find_elements(self, locator):
+    def get_elements(self, locator):
         return self.driver.find_elements(*locator)
