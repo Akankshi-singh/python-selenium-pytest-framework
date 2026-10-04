@@ -1,9 +1,8 @@
 from selenium import webdriver
 from Pages.LoginPage import LoginPage
 
-def test_TC005_Verify_Products_page_URL_after_successful_login():
+def test_TC005_Verify_Products_page_URL_after_successful_login(driver):
     #0. Setup
-    driver = webdriver.Chrome()
     login_page = LoginPage(driver)
 
     #1. Navigate to URL

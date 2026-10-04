@@ -2,6 +2,7 @@ from Pages.BasePage import BasePage
 from Locators import ProductsLocators
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
 
 class ProductsPage(BasePage):
 
@@ -26,7 +27,7 @@ class ProductsPage(BasePage):
 
     def verify_products_are_displayed(self):
         items = self.get_elements(ProductsLocators.items)
-        assert len(items)>0
+        assert len(items)>0, "No items are displayed on the products page"
 
         for item in items:
             assert item.is_displayed()
@@ -43,7 +44,7 @@ class ProductsPage(BasePage):
             for j in range(i+1, len(prices)):
                 price_i =float(prices[i].text.replace("$", ""))
                 price_j =float(prices[j].text.replace("$", ""))
-                assert price_i<=price_j 
+                assert price_i<=price_j , "Items are not sorted properly"
 
     def get_shopping_cart_badge(self):
         shopping_cart_badge = self.wait_for_visible_element(ProductsLocators.shopping_cart_badge)
@@ -55,7 +56,33 @@ class ProductsPage(BasePage):
         badge_value = self.get_shopping_cart_badge()
         self.add_product_to_cart(product_name2)
         updated_value = self.get_shopping_cart_badge()
-        assert updated_value == badge_value+1
+        assert updated_value == badge_value+1, "Shopping cart badge is not updated"
+
+    def product_name_on_product_page(self, product_name):
+        locator = (ProductsLocators.product_name_on_product_details[0],
+                   ProductsLocators.product_name_on_product_details[1].format(product_name = product_name))
+        element = self.wait_for_visible_element(locator)
+        return element.text
+
+    def verify_price_on_product_details_page(self, product_name):
+        locator = (ProductsLocators.price_on_product_details[0],
+                   ProductsLocators.price_on_product_details[1].format(product_name = product_name))
+        element = self.wait_for_visible_element(locator)
+        return element.text
+
+    def get_product_price(self, product_name):
+        locator = (ProductsLocators.product_price[0],
+                   ProductsLocators.product_price[1].format(product_name=product_name))
+        element = self.wait_for_visible_element(locator)
+        return element.text
+
+    def get_product_name(self, product_name):
+        locator = (ProductsLocators.items_on_products_page[0],
+                   ProductsLocators.items_on_products_page[1].format(product_name = product_name))
+        element = self.wait_for_visible_element(locator)
+        return element.text
+
+    
 
 
 

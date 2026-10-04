@@ -1,8 +1,7 @@
 from selenium import webdriver
 from Pages.LoginPage import LoginPage
 
-def test_TC008_sort_products_low_to_high():
-    driver = webdriver.Chrome()
+def test_TC007_sort_products_low_to_high(driver):
     login_page = LoginPage(driver)
 
     #1. Navigate to URL

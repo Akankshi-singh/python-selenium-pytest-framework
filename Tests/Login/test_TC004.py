@@ -1,8 +1,7 @@
 from selenium import webdriver
 from Pages.LoginPage import LoginPage
 
-def test_TC004():
-    driver = webdriver.Chrome()
+def test_TC004(driver):
 
     login_page = LoginPage(driver)
 

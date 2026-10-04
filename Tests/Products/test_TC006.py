@@ -1,8 +1,7 @@
 from selenium import webdriver
 from Pages.LoginPage import LoginPage 
 
-def test_TC006_Verify_products_are_displayed():
-    driver = webdriver.Chrome()
+def test_TC006_Verify_products_are_displayed(driver):
     login_page = LoginPage(driver)
 
     #1. Navigate to url

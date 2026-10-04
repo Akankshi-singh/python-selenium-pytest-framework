@@ -1,8 +1,7 @@
 from selenium import webdriver
 from Pages.LoginPage import LoginPage
 
-def test_TC001():
-    driver = webdriver.Chrome()
+def test_TC001(driver):
     login_page = LoginPage(driver)
 
     ##TC001: Login with valid username and password

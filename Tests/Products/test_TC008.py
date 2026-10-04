@@ -1,9 +1,7 @@
 from selenium import webdriver
 from Pages.LoginPage import LoginPage
 
-def test_TC008_verify_shopping_cart_badge_updates():
-    driver = webdriver.Chrome()
-
+def test_TC008_verify_shopping_cart_badge_updates(driver):
     login_page = LoginPage(driver)
 
     #1. Navigate to URL
