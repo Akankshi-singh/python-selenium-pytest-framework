@@ -1,6 +1,7 @@
-from selenium import webdriver
+import pytest
 from Pages.LoginPage import LoginPage
 
+@pytest.mark.regression
 def test_TC007_sort_products_low_to_high(driver):
     login_page = LoginPage(driver)
 

@@ -25,4 +25,5 @@ class BasePage:
         assert self.driver.current_url == url
 
     def get_elements(self, locator):
-        return self.driver.find_elements(*locator)
+        wait = WebDriverWait(self.driver, 10)
+        return wait.until(EC.presence_of_all_elements_located(locator))

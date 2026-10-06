@@ -6,6 +6,7 @@ from Pages.LoginPage import LoginPage
                            "Sauce Labs Backpack",
                            "Sauce Labs Bike Light"])
 
+@pytest.mark.regression
 def test_TC009_match_product_name_and_price(driver, product):
     login_page = LoginPage(driver)
 

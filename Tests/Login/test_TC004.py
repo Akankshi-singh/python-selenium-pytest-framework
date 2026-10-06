@@ -1,6 +1,7 @@
-from selenium import webdriver
+import pytest
 from Pages.LoginPage import LoginPage
 
+@pytest.mark.regression
 def test_TC004(driver):
 
     login_page = LoginPage(driver)

@@ -1,6 +1,7 @@
-from selenium import webdriver
+import pytest
 from Pages.LoginPage import LoginPage 
 
+@pytest.mark.smoke
 def test_TC006_Verify_products_are_displayed(driver):
     login_page = LoginPage(driver)
 

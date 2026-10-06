@@ -1,6 +1,7 @@
-from selenium import webdriver
+import pytest
 from Pages.LoginPage import LoginPage
 
+@pytest.mark.smoke
 def test_TC008_verify_shopping_cart_badge_updates(driver):
     login_page = LoginPage(driver)
 

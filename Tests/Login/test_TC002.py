@@ -5,6 +5,7 @@ from Pages.LoginPage import LoginPage
                          [("wrong_user", "secret_sauce"),
                           ("standard_user", "wrong_password")])
 
+@pytest.mark.regression
 def test_TC002(driver, username, password):
     
     #TC-002 Login with invalid username & password/ valid username & invalid password

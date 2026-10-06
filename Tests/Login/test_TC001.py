@@ -1,6 +1,7 @@
-from selenium import webdriver
+import pytest
 from Pages.LoginPage import LoginPage
 
+@pytest.mark.smoke
 def test_TC001(driver):
     login_page = LoginPage(driver)
 
