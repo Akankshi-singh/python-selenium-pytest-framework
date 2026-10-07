@@ -8,13 +8,13 @@ class LoginPage(BasePage):
         return self.wait_for_visible_element(LoginLocators.username_input)
 
     def get_password_field(self):
-            return self.wait_for_visible_element(LoginLocators.password_input)
+        return self.wait_for_visible_element(LoginLocators.password_input)
 
     def get_login_button(self):
-            return self.wait_for_visible_element(LoginLocators.login_button)
+        return self.wait_for_visible_element(LoginLocators.login_button)
 
     def get_credentials_container(self):
-            return self.wait_for_visible_element(LoginLocators.credentials_container)
+        return self.wait_for_visible_element(LoginLocators.credentials_container)
 
     def enter_username(self, username):
         return self.enter_text(LoginLocators.username_input, username)
@@ -24,9 +24,6 @@ class LoginPage(BasePage):
 
     def click_login(self):
         self.click(LoginLocators.login_button)
-
-    def credentials_container_displayed(self):
-        return self.wait_for_visible_element(LoginLocators.credentials_container)
 
     def login(self, username, password):
         self.enter_username(username)

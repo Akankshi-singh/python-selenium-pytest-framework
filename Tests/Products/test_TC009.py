@@ -26,10 +26,10 @@ def test_TC009_match_product_name_and_price(driver, product):
     products_page.click_item_on_products_page(product)
 
     #6. Get product name on product details page 
-    product_name_on_product_details = products_page.product_name_on_product_page(product)
+    product_name_on_product_details = products_page.get_product_name_on_product_details_page(product)
 
     #7. Get price on product details page 
-    product_price_on_product_details = products_page.verify_price_on_product_details_page(product)
+    product_price_on_product_details = products_page.get_product_price_on_product_details_page(product)
 
     #5. Verify product name
     assert product_name_on_inventory_page == product_name_on_product_details

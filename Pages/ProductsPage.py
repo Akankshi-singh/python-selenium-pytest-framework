@@ -1,19 +1,12 @@
 from Pages.BasePage import BasePage
 from Locators import ProductsLocators
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait
 
 class ProductsPage(BasePage):
 
     def verify_products_title(self, title):
         element = self.wait_for_visible_element(ProductsLocators.products_title)
         assert element.text == title
-
-    # def add_product_to_cart(self, product_name):
-    #     product_id = "add-to-cart-" + product_name.lower().replace(" ", "-")
-    #     locator = (By.ID, product_id)
-    #     self.click(locator)
 
     def add_product_to_cart(self, product_name):
         locator = (ProductsLocators.add_to_cart_button[0],
@@ -58,13 +51,13 @@ class ProductsPage(BasePage):
         updated_value = self.get_shopping_cart_badge()
         assert updated_value == badge_value+1, "Shopping cart badge is not updated"
 
-    def product_name_on_product_page(self, product_name):
+    def get_product_name_on_product_details_page(self, product_name):
         locator = (ProductsLocators.product_name_on_product_details[0],
                    ProductsLocators.product_name_on_product_details[1].format(product_name = product_name))
         element = self.wait_for_visible_element(locator)
         return element.text
 
-    def verify_price_on_product_details_page(self, product_name):
+    def get_product_price_on_product_details_page(self, product_name):
         locator = (ProductsLocators.price_on_product_details[0],
                    ProductsLocators.price_on_product_details[1].format(product_name = product_name))
         element = self.wait_for_visible_element(locator)

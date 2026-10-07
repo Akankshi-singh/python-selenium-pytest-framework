@@ -3,7 +3,6 @@ from Pages.LoginPage import LoginPage
 
 @pytest.mark.smoke
 def test_TC005_Verify_Products_page_URL_after_successful_login(driver):
-    #0. Setup
     login_page = LoginPage(driver)
 
     #1. Navigate to URL
