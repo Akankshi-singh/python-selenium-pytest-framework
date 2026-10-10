@@ -6,11 +6,20 @@ from configuration import config
 def driver():
     browser = config.browser.lower()
     if browser == "chrome":
-        driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        if config.headless == True:
+            options.add_argument("--headless")
+        driver = webdriver.Chrome(options=options)
     elif browser == "firefox":
-        driver = webdriver.Firefox()
+        options = webdriver.FirefoxOptions()
+        if config.headless == True:
+            options.add_argument("--headless")
+        driver = webdriver.Firefox(options=options)
     elif browser == "safari":
-        driver = webdriver.Safari()
+        options = webdriver.SafariOptions()
+        if config.headless == True:
+            options.add_argument("--headless")
+        driver = webdriver.Safari(options=options)
     else:
         raise ValueError(f"Unsupported browser: {browser}")
     driver.maximize_window()
