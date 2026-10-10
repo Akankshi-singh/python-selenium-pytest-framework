@@ -2,11 +2,11 @@ import pytest
 from Pages.LoginPage import LoginPage
 
 @pytest.mark.regression
-def test_TC007_sort_products_low_to_high(driver):
+def test_TC007_sort_products_low_to_high(driver, app_config):
     login_page = LoginPage(driver)
 
     #1. Navigate to URL
-    driver.get("https://www.saucedemo.com/")
+    driver.get(app_config.base_url)
 
     #2. Login
     products_page = login_page.login("standard_user", "secret_sauce")

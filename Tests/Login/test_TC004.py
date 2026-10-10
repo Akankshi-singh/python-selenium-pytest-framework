@@ -2,14 +2,14 @@ import pytest
 from Pages.LoginPage import LoginPage
 
 @pytest.mark.regression
-def test_TC004(driver):
+def test_TC004(driver, app_config):
 
     login_page = LoginPage(driver)
 
     #TC-004 Verify login page elements
 
     #1. Navigate to the URL
-    driver.get("https://www.saucedemo.com/")
+    driver.get(app_config.base_url)
 
     #2. Verify username field is displayed
     username = login_page.get_username_field()

@@ -7,11 +7,11 @@ from Pages.LoginPage import LoginPage
                            "Sauce Labs Bike Light"])
 
 @pytest.mark.regression
-def test_TC009_match_product_name_and_price(driver, product):
+def test_TC009_match_product_name_and_price(driver, product, app_config):
     login_page = LoginPage(driver)
 
     #1. Navigate to URL
-    driver.get("https://www.saucedemo.com/")
+    driver.get(app_config.base_url)
 
     #2. Login
     products_page = login_page.login("standard_user", "secret_sauce")
